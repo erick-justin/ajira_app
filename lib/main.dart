@@ -132,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // color: Colors.black,
               child: Center(
                 child: GradientText(
-                  'Ajira App',
+                  'DubaiJobs',
                   style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold),
                   colors: [Colors.white, Colors.white],
                 ),

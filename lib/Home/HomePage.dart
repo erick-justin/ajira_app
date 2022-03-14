@@ -29,6 +29,7 @@ class HomePage extends StatefulWidget{
 class HomePageState extends State<HomePage>{
   bool hasDoneLoading = false;
   List jobs = [];
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   @override
   void initState() {
@@ -42,7 +43,8 @@ class HomePageState extends State<HomePage>{
 
 
    return Scaffold(
-
+     drawer: drawer(),
+     key: _key, // Assign the key to Scaffold.
      body:  theBody(),
 
    );
@@ -64,16 +66,30 @@ class HomePageState extends State<HomePage>{
                ),),
              Expanded(
                flex: 2,
-               child:  Align(
-                 alignment: Alignment.centerLeft,
-                 child: Text(
-                 "Jobs For You",
-                 style: TextStyle(
-                     color: Colors.black,
-                     fontSize: 30
-                 )
-                 ,
+               child:  Row(
+                 children: [
+
+                   InkWell(
+                     onTap: (){
+                       _key.currentState!.openDrawer();
+                     },
+                     child: Padding(
+                       padding: const EdgeInsets.all(16.0),
+                       child: Icon(Icons.menu),
+                     ),
+                   ),
+                   Align(
+                     alignment: Alignment.centerLeft,
+                     child: Text(
+                     "Jobs For You",
+                     style: TextStyle(
+                         color: Colors.black,
+                         fontSize: 30
+                     )
+                     ,
              ),
+                   ),
+                 ],
                ),),
 
              Expanded(
@@ -227,7 +243,7 @@ class HomePageState extends State<HomePage>{
                                 color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                               ),
 
-                          imageUrl:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzzVNuceVZug1JpFuUgwj37HiHsmyvN6gd9w&usqp=CAU",
+                          imageUrl:consultation["yoast_head_json"]["og_image"].isNotEmpty?consultation["yoast_head_json"]["og_image"][0]['url']:"",
                           //['cover_image'].replaceAll("https://cargoway-main.s3.us-east-1.amazonaws.com", "https://d3guu15xcnq900.cloudfront.net"),
                           errorWidget:(_,p,c) =>
                               Container(
@@ -392,6 +408,114 @@ SizedBox(
     }
 
 
+  }
+
+
+  Widget drawer(){
+    return Container(
+      color: Colors.white,
+      width: SizeConfig.screenWidth!*0.6,
+
+      child:
+      Column(
+        children: [
+
+          SizedBox(
+            height: 60,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child:
+                  Container(
+
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.black
+                      ),
+
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Icon(Icons.person,size: 70,color:Colors.white,),
+
+                      )   ),
+
+                ),
+                Text(
+                "DUBAI JOB USER",
+                  style: TextStyle(
+                    color:Colors.black,
+                    fontSize: 20,
+                  ),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView(
+              shrinkWrap: true,
+
+
+
+
+
+
+
+
+
+
+            ),
+          ),
+
+          // Spacer(),
+          // ListTile(
+          //   onTap: () {
+          //
+          //     launch("https://www.notion.so/Swahilies-Terms-And-Conditions-Muongozo-Na-Masherti-Ya-Swahilies-9e49e867add44d5e8ff803fa3ff66014");
+          //
+          //   },
+          //   leading: Icon(
+          //     EvaIcons.list,
+          //     color: appDeemBlackColor,
+          //     size: 20,
+          //   ),
+          //   title: Text('Terms and Conditions',
+          //       style: TextStyle(fontSize: 14, color:  appDeemBlackColor)),
+          // ),
+          // ListTile(
+          //   onTap: () {
+          //     launch("tel:+255682411725");
+          //   },
+          //   leading: Icon(
+          //     EvaIcons.phoneCallOutline,
+          //     color: appDeemBlackColor,
+          //     size: 20,
+          //   ),
+          //   title: Text('Contact',
+          //       style: TextStyle(fontSize: 14, color:  appDeemBlackColor)),
+          // ),
+          // ListTile(
+          //   onTap: () {
+          //     startTimer();
+          //   },
+          //   leading: Icon(
+          //     Icons.arrow_upward,
+          //     color:  appDeemBlackColor,
+          //     size: 20,
+          //   ),
+          //   title: Text('Logout',
+          //       style: TextStyle(fontSize: 14, color:  appDeemBlackColor)),
+          // ),
+        ],
+      ),
+
+    );
   }
 }
 

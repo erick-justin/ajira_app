@@ -45,21 +45,21 @@ class WebViewWidget extends StatelessWidget{
           //     ),
           //   ),
           // ),
-          Container(
-            decoration: BoxDecoration(
-                color: appPrimaryColor,
-                borderRadius: BorderRadius.all(Radius.circular(15))
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: Center(
-                child: Text("Apply Now",style: TextStyle(
-                    fontSize: 34,
-                    color: Colors.white
-                ),),
-              ),
-            ),
-          ),
+          // Container(
+          //   decoration: BoxDecoration(
+          //       color: appPrimaryColor,
+          //       borderRadius: BorderRadius.all(Radius.circular(15))
+          //   ),
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(32.0),
+          //     child: Center(
+          //       child: Text("Apply Now",style: TextStyle(
+          //           fontSize: 34,
+          //           color: Colors.white
+          //       ),),
+          //     ),
+          //   ),
+          // ),
           Html(data:article['content']['rendered'],style: {
             "*":Style(
                 color: Colors.black

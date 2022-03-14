@@ -2,7 +2,7 @@
     package="com.ajira.app.ajira_app">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="ajira_app"
+        android:label="DubaiJobs"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
